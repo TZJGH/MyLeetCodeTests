@@ -53,7 +53,7 @@ namespace LengthOfLongestSubstring
             var longString = "";
 
             var n = s.Length;
-            var startIndex = 0;
+            var start = -1;
 
             var i = 0;
             while (i < n)
@@ -62,9 +62,10 @@ namespace LengthOfLongestSubstring
 
                 if (set.ContainsKey(c))
                 {
-                    //从重复字符的上个位置的下个索引接着走
                     //记录新的子字符串开头（左边界）
-                    i = startIndex = set[c] + 1;
+                    //从重复字符的上个位置的下个索引接着走
+                    start = set[c];
+                    i = start + 1;
 
                     set.Clear();
 
@@ -74,10 +75,10 @@ namespace LengthOfLongestSubstring
                 set.Add(c, i);
 
                 //左边界到当前位置的长度
-                var length = i - startIndex + 1;
+                var length = i - start;
                 if (longString.Length < length)
                 {
-                    longString = s.Substring(startIndex, length);
+                    longString = s.Substring(start + 1, length);
                 }
 
                 i++;
