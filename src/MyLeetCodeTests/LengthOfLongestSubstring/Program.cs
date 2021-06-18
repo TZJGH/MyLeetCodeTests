@@ -28,13 +28,8 @@ namespace LengthOfLongestSubstring
         }
 
         
+
         public static int LengthOfLongestSubstring(string s)
-        {
-
-            
-        }
-
-        public static int LengthOfLongestSubstring1(string s)
         {
             ISet<char> occ = new HashSet<char>();
             var n = s.Length;
