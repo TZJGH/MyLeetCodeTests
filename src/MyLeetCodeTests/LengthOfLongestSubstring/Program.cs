@@ -55,10 +55,10 @@ namespace LengthOfLongestSubstring
             var n = s.Length;
             var startIndex = 0;
 
-            int i = 0;
+            var i = 0;
             while (i < n)
             {
-                char c = s[i];
+                var c = s[i];
 
                 if (set.ContainsKey(c))
                 {
