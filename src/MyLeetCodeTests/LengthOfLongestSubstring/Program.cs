@@ -54,9 +54,8 @@ namespace LengthOfLongestSubstring
 
             var n = s.Length;
             var start = -1;
-
-            var i = 0;
-            while (i < n)
+            
+            for (int i = 0; i < n; i++)
             {
                 var c = s[i];
 
@@ -64,8 +63,7 @@ namespace LengthOfLongestSubstring
                 {
                     //记录新的子字符串开头（左边界）
                     //从重复字符的上个位置的下个索引接着走
-                    start = set[c];
-                    i = start + 1;
+                    i = start = set[c];
 
                     set.Clear();
 
@@ -80,8 +78,6 @@ namespace LengthOfLongestSubstring
                 {
                     longString = s.Substring(start + 1, length);
                 }
-
-                i++;
             }
 
             Console.WriteLine($"最长不重复字符串：{longString}");
