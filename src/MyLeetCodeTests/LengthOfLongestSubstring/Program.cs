@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 
 namespace LengthOfLongestSubstring
@@ -14,22 +15,82 @@ namespace LengthOfLongestSubstring
 
             s = "dvdf";
 
-            /*
-                s = "pwwkew";
 
-                s = "";
+            s = "pwwkew";
 
-                s = "dddd";
-            */
+            s = "";
 
-            var len = LengthOfLongestSubstring(s);
-            Console.WriteLine(len);
+            s = "dddd";
+
+
+            int len = 50000000;
+
+            var random = new Random();
+
+            var ss = new char[len];
+            for (int i = 0; i < len; i++)
+            {
+                ss[i] = (char) random.Next(0, char.MaxValue);
+            }
+
+            s = new string(ss);
+
+
+            var stopwatch = new Stopwatch();
+            stopwatch.Start();
+            len = LengthOfLongestSubstring(s);
+            stopwatch.Stop();
+            Console.WriteLine($"长度：{len}，耗时：{stopwatch.ElapsedMilliseconds}");
+            stopwatch.Restart();
+            len = LengthOfLongestSubstringFor(s);
+            stopwatch.Stop();
+            Console.WriteLine($"官方长度：{len}，耗时：{stopwatch.ElapsedMilliseconds}");
             Console.Read();
         }
 
-        
-
         public static int LengthOfLongestSubstring(string s)
+        {
+            var set = new Dictionary<char, int>();
+
+            var longString = "";
+
+            var n = s.Length;
+            var startIndex = 0;
+
+            for (int i = 0; i < n; i++)
+            {
+                char c = s[i];
+
+                if (set.ContainsKey(c))
+                {
+                    //从左边界+1重新走
+                    i = set[c]; //这个实际就是右边界，i的索引在for里面移动，所以此处i值不改
+                    startIndex = i + 1; //从右边界+1重新开始，将左边界切换到右边界+1
+
+                    set.Clear();
+                }
+                else
+                {
+                    set.Add(c, i);
+                }
+
+                //左边界到当前位置的长度
+                var length = i - startIndex + 1;
+
+
+                if (longString.Length < length)
+                {
+                    longString = s.Substring(startIndex, length);
+                }
+            }
+
+            Console.WriteLine(longString);
+
+            return longString.Length;
+        }
+
+
+        public static int LengthOfLongestSubstringFor(string s)
         {
             ISet<char> occ = new HashSet<char>();
             var n = s.Length;
@@ -55,7 +116,6 @@ namespace LengthOfLongestSubstring
                 ans = Math.Max(ans, rk - i + 1);
             }
 
-            Console.WriteLine(s);
             return ans;
         }
     }
