@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Linq;
+using System.Collections.Generic;
 
 namespace FindMedianSortedArrays
 {
@@ -17,9 +17,18 @@ namespace FindMedianSortedArrays
 
         static double FindMedianSortedArrays(int[] nums1, int[] nums2)
         {
-            var nums = nums1.Union(nums2).ToArray();
+            var nums = new List<int>();
 
-            var len = nums.Length;
+            int i = 0, j = 0;
+            for (i = 0; i < nums1.Length; i++)
+            {
+                for (j = 0; j < nums2.Length; j++)
+                {
+                    
+                }
+            }
+
+            var len = nums.Count;
 
             switch (len)
             {
