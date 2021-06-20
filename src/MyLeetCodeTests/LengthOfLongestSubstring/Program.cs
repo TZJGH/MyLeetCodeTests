@@ -52,9 +52,11 @@ namespace LengthOfLongestSubstring
 
             var longString = "";
 
+            int longStartIndex = -1, longLength = 0;
+
             var n = s.Length;
             var start = -1;
-            
+
             for (int i = 0; i < n; i++)
             {
                 var c = s[i];
@@ -74,15 +76,15 @@ namespace LengthOfLongestSubstring
 
                 //左边界到当前位置的长度
                 var length = i - start;
-                if (longString.Length < length)
-                {
-                    longString = s.Substring(start + 1, length);
-                }
+                if (longLength >= length) continue;
+                longStartIndex = start;
+                longLength = length;
+                
             }
+            //longString = s.Substring(start + 1, length);
+            Console.WriteLine($"最长不重复字符串：{s.Substring(longStartIndex + 1, longLength)}");
 
-            Console.WriteLine($"最长不重复字符串：{longString}");
-
-            return longString.Length;
+            return longLength;
         }
 
 
