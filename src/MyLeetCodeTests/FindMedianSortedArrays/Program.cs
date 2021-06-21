@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+
 
 namespace FindMedianSortedArrays
 {
@@ -7,38 +9,45 @@ namespace FindMedianSortedArrays
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            int[] nums1 = {1, 1};
+            int[] nums2 = {1, 2};
+            Console.WriteLine($"nums1:[{string.Join(",", nums1)}]");
 
-            int[] nums1 = {1, 3};
-            int[] nums2 = {2};
-
-            Console.WriteLine(FindMedianSortedArrays(nums1, nums2));
+            Console.WriteLine($"nums2:[{string.Join(",", nums2)}]");
+            Console.WriteLine($"结果：{FindMedianSortedArrays(nums1, nums2)}");
+            Console.WriteLine("--------------------------------------------------------------------");
+            Console.WriteLine();
         }
+
 
         static double FindMedianSortedArrays(int[] nums1, int[] nums2)
         {
-            var nums = new List<int>();
+            var len = nums1.Length + nums2.Length;
 
-            int i = 0, j = 0;
-            for (i = 0; i < nums1.Length; i++)
+            if (len == 0)
+                return 0;
+
+            var queue1 = new Queue<int>(nums1);
+            var queue2 = new Queue<int>(nums2);
+
+            var i = -1;
+            var nums = new int[len];
+
+            while (queue1.Count > 0 && queue2.Count > 0)
             {
-                for (j = 0; j < nums2.Length; j++)
-                {
-                    
-                }
+                nums[++i] = queue1.Peek() > queue2.Peek() ? queue2.Dequeue() : queue1.Dequeue();
             }
 
-            var len = nums.Count;
-
-            switch (len)
+            while (queue1.Count > 0)
             {
-                case 0:
-                    return 0;
-                case 1:
-                    return nums[0];
-                case 2:
-                    return (nums[0] + nums[1]) >> 1;
+                nums[++i] = queue1.Dequeue();
             }
+
+            while (queue2.Count > 0)
+            {
+                nums[++i] = queue2.Dequeue();
+            }
+
 
             if (len % 2 == 1)
             {
@@ -46,10 +55,7 @@ namespace FindMedianSortedArrays
             }
 
             var index = len >> 1;
-            var first = nums[index - 1];
-            var second = nums[index];
-
-            return (first + second) >> 1;
+            return (nums[index - 1] + nums[index]) / 2.0d;
         }
     }
 }
