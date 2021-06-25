@@ -8,10 +8,16 @@ namespace LongestPalindrome
         static void Main(string[] args)
         {
             var s = "babad";
-            s = "cbbd";
-            s = "a";
-            s = "ac";
-            s = "";
+            //s = "cbbbd";
+            //s = "cbbd";
+            //s = "a";
+            //s = "ac";
+            //s = "ccc";
+            s = "acbcccc";
+            //s = "acbccc";
+            //s = "abcbccc";
+            //s = "";
+            //s = "aacabdkacaa";
 
             Console.WriteLine(LongestPalindrome(s));
         }
@@ -19,35 +25,67 @@ namespace LongestPalindrome
 
         public static string LongestPalindrome(string s)
         {
-
             if (string.IsNullOrWhiteSpace(s))
                 return s;
-            
-            var set = new Dictionary<char, int>();
 
-            var len = s.Length;
+            int startIndex = 0, LongLen = 0;
 
-            int start = 0, length = 0;
-            for (var i = 0; i < len; i++)
+            var length = s.Length;
+            for (var i = 0; i < length; i++)
             {
                 var c = s[i];
-                if (set.ContainsKey(c))
+
+                if (i == 0)
                 {
-                    var index = set[c];
-
-                    if (length < i - index)
-                    {
-                        length = i - index;
-                        start = index;
-                    }
-
-                    set.Remove(c);
+                    continue;
                 }
 
-                set.Add(c, i);
+
+                for (var j = 1; j < i + 1 && j + i < length; j++)
+                {
+                    var cn = s[i + j];
+                    var cp = s[i - j];
+
+                    Console.WriteLine($"i:{i} j:{j} {i + j}:{cn},{i - j}:{cp}");
+
+                    if (cn == cp)
+                    {
+                        if (2 * j + 1 > LongLen)
+                        {
+                            startIndex = i - j;
+                            LongLen = 2 * j + 1;
+                        }
+
+                        continue;
+                    }
+
+                    break;
+                }
+
+                for (var j = 1; j < i + 1 && j + i < length; j++)
+                {
+                    var cn = s[i + j];
+                    var cp = s[i - 1];
+
+                    Console.WriteLine($"i:{i} j:{j} {i + j}:{cn},{i - j}:{cp}");
+
+                    if (cn == cp)
+                    {
+                        if (j + 2 > LongLen)
+                        {
+                            startIndex = i - 1;
+                            LongLen = j + 2;
+                        }
+
+                        continue;
+                    }
+
+                    break;
+                }
             }
 
-            return s.Substring(start, length + 1);
+
+            return s.Substring(startIndex, LongLen);
         }
     }
 }
