@@ -1,4 +1,8 @@
-﻿using System;
+﻿/*
+ * 最长回文字符串
+ */
+
+using System;
 using System.Collections.Generic;
 
 namespace LongestPalindrome
@@ -10,14 +14,15 @@ namespace LongestPalindrome
             var s = "babad";
             //s = "cbbbd";
             //s = "cbbd";
-            //s = "a";
+            s = "a";
             //s = "ac";
             //s = "ccc";
-            s = "acbcccc";
+            //s = "acbccbcc";
             //s = "acbccc";
             //s = "abcbccc";
-            //s = "";
+            s = "";
             //s = "aacabdkacaa";
+            //s = "bb";
 
             Console.WriteLine(LongestPalindrome(s));
         }
@@ -28,30 +33,46 @@ namespace LongestPalindrome
             if (string.IsNullOrWhiteSpace(s))
                 return s;
 
-            int startIndex = 0, longLen = 0;
+            int startIndex = 0;
+            int maxLen = 0;
 
             var length = s.Length;
+
             for (var i = 0; i < length; i++)
             {
-                var c = s[i];
+                var iii = new int[2][];
 
-                if (i == 0)
+                iii[0] = new[] {i, i + 1};
+                iii[1] = new[] {i - 1, i + 1};
+
+                foreach (var ii in iii)
                 {
-                    continue;
+                    var leftIndex = ii[0];
+                    var rightIndex = ii[1];
+
+                    while (leftIndex > -1 && rightIndex < length)
+                    {
+                        if (s[leftIndex] == s[rightIndex])
+                        {
+                            if (maxLen < rightIndex - leftIndex)
+                            {
+                                startIndex = leftIndex;
+                                maxLen = rightIndex - leftIndex;
+                            }
+
+                            --leftIndex;
+                            ++rightIndex;
+
+                            continue;
+                        }
+
+                        break;
+                    }
                 }
-
-                /*
-                var leftIndex = 0;
-                var rightIndex = i;
-                */
-                
-                
-
-                
             }
 
 
-            return s.Substring(startIndex, longLen);
+            return s.Substring(startIndex, maxLen + 1);
         }
     }
 }
