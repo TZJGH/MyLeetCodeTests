@@ -71,7 +71,6 @@ namespace LongestPalindrome
                 }
             }
 
-
             return s.Substring(startIndex, maxLen + 1);
         }
     }
