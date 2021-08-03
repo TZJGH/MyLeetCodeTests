@@ -1,6 +1,0 @@
-F:\Source\Repos\TZJGH\MyLeetCodeTests\src\MyLeetCodeTests\ZTransformation\bin\Debug\ZTransformation.exe
-F:\Source\Repos\TZJGH\MyLeetCodeTests\src\MyLeetCodeTests\ZTransformation\bin\Debug\ZTransformation.pdb
-F:\Source\Repos\TZJGH\MyLeetCodeTests\src\MyLeetCodeTests\ZTransformation\obj\Debug\ZTransformation.csproj.AssemblyReference.cache
-F:\Source\Repos\TZJGH\MyLeetCodeTests\src\MyLeetCodeTests\ZTransformation\obj\Debug\ZTransformation.csproj.CoreCompileInputs.cache
-F:\Source\Repos\TZJGH\MyLeetCodeTests\src\MyLeetCodeTests\ZTransformation\obj\Debug\ZTransformation.exe
-F:\Source\Repos\TZJGH\MyLeetCodeTests\src\MyLeetCodeTests\ZTransformation\obj\Debug\ZTransformation.pdb
