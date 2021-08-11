@@ -12,6 +12,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LongestPalindrome", "Longes
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZTransformation", "ZTransformation\ZTransformation.csproj", "{47BB6C64-2881-4672-9428-45DF29685AD7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntegerReverse", "IntegerReverse\IntegerReverse.csproj", "{18C2055A-9D37-486E-95E9-D7C97080BE0B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,5 +44,9 @@ Global
 		{47BB6C64-2881-4672-9428-45DF29685AD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{47BB6C64-2881-4672-9428-45DF29685AD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{47BB6C64-2881-4672-9428-45DF29685AD7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18C2055A-9D37-486E-95E9-D7C97080BE0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18C2055A-9D37-486E-95E9-D7C97080BE0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18C2055A-9D37-486E-95E9-D7C97080BE0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18C2055A-9D37-486E-95E9-D7C97080BE0B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Text;
 
 namespace ZTransformation
@@ -8,13 +7,13 @@ namespace ZTransformation
     {
         public static void Main(string[] args)
         {
-            string s = "PAYPALISHIRING";
-            string str = Convert(s, 3);
+            const string s = "PAYPALISHIRING";
+            var str = Convert(s, 3);
 
             Console.WriteLine(str);
         }
 
-        public static string Convert(string s, int numRows)
+        private static string Convert(string s, int numRows)
         {
             if (string.IsNullOrWhiteSpace(s))
                 return s;
